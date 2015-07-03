@@ -1,5 +1,5 @@
 {
-    "name": "RCTAutoComplete",
+    "name": "react-native-autocomplete",
     "author": "Nicolas Ulrich <github@ulrich.co> (https://github.com/nulrich)",
     "description": "React Native Component for MLPAutoCompleteTextField",
     "repository": {
