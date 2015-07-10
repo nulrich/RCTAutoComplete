@@ -1,10 +1,3 @@
-//
-//  AutoCompleteView.m
-//  FaceOff
-//
-//  Created by Nicolas Ulrich on 10/06/2015.
-//
-
 #import <Foundation/Foundation.h>
 #import "MLPAutoCompleteTextField/MLPAutoCompleteTextField.h"
 #import "AutoCompleteView.h"

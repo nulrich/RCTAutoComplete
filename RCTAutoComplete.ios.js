@@ -1,11 +1,10 @@
 var React = require('react-native');
-var AlertIOS = require('AlertIOS');
 var StyleSheet = require('StyleSheet');
 var { requireNativeComponent } = require('react-native');
 
-var NativeAutoComplete = requireNativeComponent('AutoComplete', null);
+var NativeAutoComplete = requireNativeComponent('RCTAutoComplete', null);
 
-var AutoComplete = React.createClass({
+var RCTAutoComplete = React.createClass({
 
     propTypes: {
         suggestions: React.PropTypes.array
@@ -43,4 +42,4 @@ var styles = StyleSheet.create({
     AutoComplete: {height: 50, width: 300}
 });
 
-module.exports = AutoComplete
+module.exports = RCTAutoComplete

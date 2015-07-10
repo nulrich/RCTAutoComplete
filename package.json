@@ -2,21 +2,17 @@
     "name": "react-native-autocomplete",
     "author": "Nicolas Ulrich <github@ulrich.co> (https://github.com/nulrich)",
     "description": "React Native Component for MLPAutoCompleteTextField",
+    "version": "0.0.2",
+    "main": "RCTAutoComplete.ios.js",
     "repository": {
         "type": "git",
         "url": "https://github.com/nulrich/RCTAutoComplete.git"
     },
-    "version": "0.0.1",
-    "scripts": {
-        "start": "node_modules/react-native/packager/packager.sh"
-    },
+    "license": "MIT",
     "keywords": [
         "react-component",
         "react-native",
         "ios",
         "autocomplete"
-    ],
-    "dependencies": {
-        "react-native": "^0.6.0"
-    }
+    ]
 }
