@@ -8,6 +8,7 @@
 
 RCT_EXPORT_MODULE()
 RCT_EXPORT_VIEW_PROPERTY(suggestions, NSArray)
+RCT_EXPORT_VIEW_PROPERTY(placeholder, NSString)
 
 - (UIView *) view
 {
@@ -17,7 +18,6 @@ RCT_EXPORT_VIEW_PROPERTY(suggestions, NSArray)
     searchTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
     searchTextField.textColor = [UIColor blackColor];
     searchTextField.returnKeyType = UIReturnKeyDone;
-    searchTextField.placeholder = @"Enter name to search";
     searchTextField.autocorrectionType = UITextAutocorrectionTypeNo;
     searchTextField.autoCompleteDataSource = self;
     searchTextField.autoCompleteDelegate = self;

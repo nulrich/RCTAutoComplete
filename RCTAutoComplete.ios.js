@@ -12,7 +12,8 @@ var RCTAutoComplete = React.createClass({
 
     getDefaultProps: function() {
         return {
-            suggestions: []
+            suggestions: [],
+            placeholder: 'placeholder'
         };
     },
 
@@ -32,6 +33,7 @@ var RCTAutoComplete = React.createClass({
             style={styles.AutoComplete}
             onChange={this._onChange}
             suggestions={this.props.suggestions}
+            placeholder={this.props.placeholder}
             />
         )
     }
