@@ -62,6 +62,7 @@ var Test = React.createClass({
                 </Text>
             <AutoComplete onTyping={this.onTyping}
             onSelect={this.onSelect}
+            placeholder='This is a great placeholder'
             suggestions={this.state.data}/>
             </View>
         );
