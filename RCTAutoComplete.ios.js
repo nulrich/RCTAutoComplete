@@ -138,6 +138,7 @@ var RCTAutoComplete = React.createClass({
     render: function () {
 
         var props = Object.assign({}, this.props);
+        props.style = [styles.input, this.props.style];
 
         return (
             <NativeAutoComplete
@@ -149,6 +150,13 @@ var RCTAutoComplete = React.createClass({
         )
     }
 
+});
+
+var styles = StyleSheet.create({
+  input: {
+      width: 300,
+      height: 40
+  },
 });
 
 module.exports = RCTAutoComplete
