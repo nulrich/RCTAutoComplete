@@ -5,6 +5,7 @@
 
 
 @interface AutoCompleteView : MLPAutoCompleteTextField <UITextFieldDelegate>
+  @property (nonatomic, assign) BOOL autoCorrect;
   @property (retain, nonatomic) NSArray *suggestions;
   @property (copy) void (^handler)(NSArray *);
 

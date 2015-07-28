@@ -33,6 +33,18 @@
   return self;
 }
 
+- (void)setAutoCorrect:(BOOL)autoCorrect
+{
+    self.autocorrectionType = (autoCorrect ? UITextAutocorrectionTypeYes : UITextAutocorrectionTypeNo);
+}
+
+- (BOOL)autoCorrect
+{
+    return self.autocorrectionType == UITextAutocorrectionTypeYes;
+}
+
+
+
 #define RCT_TEXT_EVENT_HANDLER(delegateMethod, eventName) \
 - (void)delegateMethod                                    \
 {                                                         \
