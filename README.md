@@ -16,19 +16,19 @@ For example download [Country list](https://gist.githubusercontent.com/Keeguon/2
 ```js
 'use strict';
 
-var React = require('react-native');
 var AutoComplete = require('react-native-autocomplete');
 var Countries = require('./countries.json');
-
+var React = require('react-native');
 var {
     AppRegistry,
     StyleSheet,
     Text,
+    TextInput,
     View,
     AlertIOS
 } = React;
 
-var Test = React.createClass({
+var RCTAutoCompleteApp = React.createClass({
 
     getInitialState: function() {
         return {data: []};
@@ -47,32 +47,40 @@ var Test = React.createClass({
         });
     },
 
-    onSelect: function (event) {
-        AlertIOS.alert(
-            'You choosed',
-            event
-        );
-    },
-
     render: function() {
         return (
             <View style={styles.container}>
-            <Text style={styles.welcome}>
-            Search for a country
+                <Text style={styles.welcome}>
+                Search for a country
                 </Text>
-            <AutoComplete onTyping={this.onTyping}
-            onSelect={this.onSelect}
-            placeholder='This is a great placeholder'
-            suggestions={this.state.data}/>
+                <AutoComplete
+                    onTyping={this.onTyping}
+                    onSelect={(e) => AlertIOS.alert('You choosed', e)}
+                    suggestions={this.state.data}
+                    placeholder='This is a great placeholder'
+                    style={styles.autocomplete}
+                    clearButtonMode='always'
+                    returnKeyType='go'
+                    textAlign='center'
+                    clearTextOnFocus={true}
+                    onBlur={() => AlertIOS.alert('Blur')}
+                    onFocus={() => AlertIOS.alert('Focus')}
+                />
             </View>
         );
     }
 });
 
 var styles = StyleSheet.create({
+    autocomplete: {
+        alignSelf: 'stretch',
+        height: 50,
+        backgroundColor: '#FFF',
+        borderColor: 'lightblue',
+        borderWidth: 1
+    },
     container: {
         flex: 1,
-        alignItems: 'center',
         backgroundColor: '#F5FCFF',
     },
     welcome: {
@@ -84,7 +92,7 @@ var styles = StyleSheet.create({
     }
 });
 
-AppRegistry.registerComponent('Test', () => Test);
+AppRegistry.registerComponent('RCTAutoCompleteApp', () => RCTAutoCompleteApp);
 ```
 
 ## License
