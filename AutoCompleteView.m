@@ -25,9 +25,10 @@
 - (instancetype)initWithEventDispatcher:(RCTEventDispatcher *)eventDispatcher
 {
   
-  if ((self = [super initWithFrame:CGRectMake(10, 200, 300, 40)])) {
+  if ((self = [super initWithFrame:CGRectZero])) {
     _eventDispatcher = eventDispatcher;
     [self addTarget:self action:@selector(_textFieldDidChange) forControlEvents:UIControlEventEditingChanged];
+    [self addTarget:self action:@selector(_textFieldBeginEditing) forControlEvents:UIControlEventEditingDidBegin];
   }
   
   return self;
@@ -44,7 +45,6 @@
 }
 
 
-
 #define RCT_TEXT_EVENT_HANDLER(delegateMethod, eventName) \
 - (void)delegateMethod                                    \
 {                                                         \
@@ -54,7 +54,18 @@
 }
 
 RCT_TEXT_EVENT_HANDLER(_textFieldDidChange, RCTTextEventTypeChange)
+RCT_TEXT_EVENT_HANDLER(_textFieldBeginEditing, RCTTextEventTypeFocus)
 
+- (BOOL)resignFirstResponder
+{
+    BOOL result = [super resignFirstResponder];
+    if (result) {
+        [_eventDispatcher sendTextEventWithType:RCTTextEventTypeBlur
+                                       reactTag:self.reactTag
+                                           text:self.text];
+    }
+    return result;
 
+}
 
 @end
