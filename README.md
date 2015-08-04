@@ -56,15 +56,35 @@ var RCTAutoCompleteApp = React.createClass({
                 <AutoComplete
                     onTyping={this.onTyping}
                     onSelect={(e) => AlertIOS.alert('You choosed', e)}
+                    onBlur={() => AlertIOS.alert('Blur')}
+                    onFocus={() => AlertIOS.alert('Focus')}
+
                     suggestions={this.state.data}
+
                     placeholder='This is a great placeholder'
                     style={styles.autocomplete}
                     clearButtonMode='always'
                     returnKeyType='go'
                     textAlign='center'
                     clearTextOnFocus={true}
-                    onBlur={() => AlertIOS.alert('Blur')}
-                    onFocus={() => AlertIOS.alert('Focus')}
+
+                    maximumNumberOfAutoCompleteRows='10'
+                    applyBoldEffectToAutoCompleteSuggestions={true}
+                    reverseAutoCompleteSuggestionsBoldEffect={true}
+                    showTextFieldDropShadowWhenAutoCompleteTableIsOpen={false}
+                    disableAutoCompleteTableUserInteractionWhileFetching={true}
+                    autoCompleteTableViewHidden={false}
+
+                    autoCompleteTableBorderColor='lightblue'
+                    autoCompleteTableBackgroundColor='azure'
+                    autoCompleteTableCornerRadius={10}
+                    autoCompleteTableBorderWidth={1}
+
+                    autoCompleteRowHeight={35}
+
+                    autoCompleteFontSize={15}
+                    autoCompleteRegularFontName='Helvetica Neue'
+                    autoCompleteBoldFontName='Helvetica Bold'
                 />
             </View>
         );
