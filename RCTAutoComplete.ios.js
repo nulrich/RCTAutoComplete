@@ -105,6 +105,35 @@ var RCTAutoComplete = React.createClass({
             'center',
             'end',
         ]),
+
+        maximumNumberOfAutoCompleteRows: PropTypes.number,
+
+        applyBoldEffectToAutoCompleteSuggestions: PropTypes.bool,
+
+        reverseAutoCompleteSuggestionsBoldEffect: PropTypes.bool,
+
+        showTextFieldDropShadowWhenAutoCompleteTableIsOpen: PropTypes.bool,
+
+        disableAutoCompleteTableUserInteractionWhileFetching: PropTypes.bool,
+
+        autoCompleteTableViewHidden: PropTypes.bool,
+
+        autoCompleteTableBorderColor: PropTypes.string,
+
+        autoCompleteTableBackgroundColor: PropTypes.string,
+
+        autoCompleteTableCornerRadius: PropTypes.number,
+
+        autoCompleteTableBorderWidth: PropTypes.number,
+
+        autoCompleteRowHeigh: PropTypes.number,
+
+        autoCompleteFontSize: PropTypes.number,
+
+        autoCompleteRegularFontName: PropTypes.string,
+
+        autoCompleteBoldFontName: PropTypes.string
+
     },
 
     getDefaultProps: function() {

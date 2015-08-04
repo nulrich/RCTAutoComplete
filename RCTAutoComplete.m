@@ -10,6 +10,23 @@ RCT_EXPORT_MODULE()
 
 // From AutoCompleteView.m
 RCT_EXPORT_VIEW_PROPERTY(suggestions, NSArray)
+RCT_EXPORT_VIEW_PROPERTY(maximumNumberOfAutoCompleteRows, NSInteger)
+RCT_EXPORT_VIEW_PROPERTY(applyBoldEffectToAutoCompleteSuggestions, BOOL)
+RCT_EXPORT_VIEW_PROPERTY(reverseAutoCompleteSuggestionsBoldEffect, BOOL)
+RCT_EXPORT_VIEW_PROPERTY(showTextFieldDropShadowWhenAutoCompleteTableIsOpen, BOOL);
+RCT_EXPORT_VIEW_PROPERTY(disableAutoCompleteTableUserInteractionWhileFetching, BOOL);
+RCT_EXPORT_VIEW_PROPERTY(autoCompleteTableViewHidden, BOOL);
+
+RCT_EXPORT_VIEW_PROPERTY(autoCompleteTableBorderColor, UIColor);
+RCT_EXPORT_VIEW_PROPERTY(autoCompleteTableBorderWidth, CGFloat);
+RCT_EXPORT_VIEW_PROPERTY(autoCompleteTableBackgroundColor, UIColor);
+RCT_EXPORT_VIEW_PROPERTY(autoCompleteTableCellBackgroundColor, UIColor);
+RCT_EXPORT_VIEW_PROPERTY(autoCompleteTableCornerRadius, CGFloat);
+
+RCT_EXPORT_VIEW_PROPERTY(autoCompleteRowHeight, CGFloat);
+RCT_EXPORT_VIEW_PROPERTY(autoCompleteFontSize, CGFloat);
+RCT_EXPORT_VIEW_PROPERTY(autoCompleteBoldFontName, NSString);
+RCT_EXPORT_VIEW_PROPERTY(autoCompleteRegularFontName, NSString);
 
 // From RCTTextFieldManager.m
 RCT_EXPORT_VIEW_PROPERTY(autoCorrect, BOOL)
@@ -43,7 +60,6 @@ RCT_CUSTOM_VIEW_PROPERTY(fontFamily, NSString, AutoCompleteView)
 {
     AutoCompleteView  *searchTextField  = [[AutoCompleteView alloc] initWithEventDispatcher:self.bridge.eventDispatcher];
     [searchTextField setBorderStyle:UITextBorderStyleRoundedRect];
-    searchTextField.backgroundColor = [UIColor whiteColor];
     searchTextField.autoCompleteDataSource = self;
     searchTextField.autoCompleteDelegate = self;
     
