@@ -50,7 +50,8 @@
 {                                                         \
   [_eventDispatcher sendTextEventWithType:eventName       \
   reactTag:self.reactTag                                  \
-  text:self.text];                                        \
+  text:self.text                                         \
+    eventCount:1];                                        \
 }
 
 RCT_TEXT_EVENT_HANDLER(_textFieldDidChange, RCTTextEventTypeChange)
@@ -62,10 +63,9 @@ RCT_TEXT_EVENT_HANDLER(_textFieldBeginEditing, RCTTextEventTypeFocus)
     if (result) {
         [_eventDispatcher sendTextEventWithType:RCTTextEventTypeBlur
                                        reactTag:self.reactTag
-                                           text:self.text];
+                                           text:self.text
+                                            eventCount:1];
     }
     return result;
-
 }
-
 @end
