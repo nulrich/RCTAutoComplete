@@ -1,6 +1,5 @@
 var React = require('react-native');
 var PropTypes = React.PropTypes;
-var StyleSheet = require('StyleSheet');
 var { requireNativeComponent } = require('react-native');
 
 var NativeAutoComplete = requireNativeComponent('RCTAutoComplete', null);
