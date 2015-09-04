@@ -85,6 +85,7 @@ var RCTAutoCompleteApp = React.createClass({
                     autoCompleteFontSize={15}
                     autoCompleteRegularFontName='Helvetica Neue'
                     autoCompleteBoldFontName='Helvetica Bold'
+                    autoCompleteTableCellTextColor={'red'}
                 />
             </View>
         );
