@@ -21,6 +21,7 @@ RCT_EXPORT_VIEW_PROPERTY(autoCompleteTableBorderColor, UIColor);
 RCT_EXPORT_VIEW_PROPERTY(autoCompleteTableBorderWidth, CGFloat);
 RCT_EXPORT_VIEW_PROPERTY(autoCompleteTableBackgroundColor, UIColor);
 RCT_EXPORT_VIEW_PROPERTY(autoCompleteTableCellBackgroundColor, UIColor);
+RCT_EXPORT_VIEW_PROPERTY(autoCompleteTableCellTextColor, UIColor);
 RCT_EXPORT_VIEW_PROPERTY(autoCompleteTableCornerRadius, CGFloat);
 
 RCT_EXPORT_VIEW_PROPERTY(autoCompleteRowHeight, CGFloat);
