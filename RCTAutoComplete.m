@@ -71,9 +71,14 @@ RCT_CUSTOM_VIEW_PROPERTY(fontFamily, NSString, AutoCompleteView)
  possibleCompletionsForString:(NSString *)string
             completionHandler:(void (^)(NSArray *))handler
 {
-    textField.handler = handler;
-    NSDictionary *event  = @{ @"possibleCompletionsForString": string, @"target": textField.reactTag};
-    [self.bridge.eventDispatcher sendInputEventWithName:@"topChange" body:event];
+    // If empty string, empty the completion list
+    if([string isEqualToString:@""]) {
+        handler([NSArray array]);
+    } else {
+        textField.handler = handler;
+        NSDictionary *event  = @{ @"possibleCompletionsForString": string, @"target": textField.reactTag};
+        [self.bridge.eventDispatcher sendInputEventWithName:@"topChange" body:event];
+    }
 }
 
 - (void)autoCompleteTextField:(MLPAutoCompleteTextField *)textField

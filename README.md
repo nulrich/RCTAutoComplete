@@ -58,6 +58,8 @@ var RCTAutoCompleteApp = React.createClass({
                     onSelect={(e) => AlertIOS.alert('You choosed', e)}
                     onBlur={() => AlertIOS.alert('Blur')}
                     onFocus={() => AlertIOS.alert('Focus')}
+                    onSubmitEditing={(e) => AlertIOS.alert('onSubmitEditing')}
+                    onEndEditing={(e) => AlertIOS.alert('onEndEditing')}
 
                     suggestions={this.state.data}
 
