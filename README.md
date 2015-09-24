@@ -70,7 +70,7 @@ var RCTAutoCompleteApp = React.createClass({
                     textAlign='center'
                     clearTextOnFocus={true}
 
-                    maximumNumberOfAutoCompleteRows='10'
+                    maximumNumberOfAutoCompleteRows={10}
                     applyBoldEffectToAutoCompleteSuggestions={true}
                     reverseAutoCompleteSuggestionsBoldEffect={true}
                     showTextFieldDropShadowWhenAutoCompleteTableIsOpen={false}
