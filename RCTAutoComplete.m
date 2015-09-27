@@ -29,6 +29,11 @@ RCT_EXPORT_VIEW_PROPERTY(autoCompleteFontSize, CGFloat);
 RCT_EXPORT_VIEW_PROPERTY(autoCompleteBoldFontName, NSString);
 RCT_EXPORT_VIEW_PROPERTY(autoCompleteRegularFontName, NSString);
 
+RCT_CUSTOM_VIEW_PROPERTY(autoCompleteTableOriginOffset, NSInteger, AutoCompleteView)
+{
+    view.autoCompleteTableOriginOffset = CGSizeMake(0, [RCTConvert NSInteger:json]);
+}
+
 // From RCTTextFieldManager.m
 RCT_EXPORT_VIEW_PROPERTY(autoCorrect, BOOL)
 RCT_EXPORT_VIEW_PROPERTY(placeholder, NSString)
@@ -60,7 +65,6 @@ RCT_CUSTOM_VIEW_PROPERTY(fontFamily, NSString, AutoCompleteView)
 - (UIView *) view
 {
     AutoCompleteView  *searchTextField  = [[AutoCompleteView alloc] initWithEventDispatcher:self.bridge.eventDispatcher];
-    [searchTextField setBorderStyle:UITextBorderStyleRoundedRect];
     searchTextField.autoCompleteDataSource = self;
     searchTextField.autoCompleteDelegate = self;
     
