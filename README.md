@@ -74,7 +74,6 @@ var RCTAutoCompleteApp = React.createClass({
                     applyBoldEffectToAutoCompleteSuggestions={true}
                     reverseAutoCompleteSuggestionsBoldEffect={true}
                     showTextFieldDropShadowWhenAutoCompleteTableIsOpen={false}
-                    disableAutoCompleteTableUserInteractionWhileFetching={true}
                     autoCompleteTableViewHidden={false}
 
                     autoCompleteTableBorderColor='lightblue'

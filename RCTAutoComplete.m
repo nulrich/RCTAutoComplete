@@ -14,7 +14,6 @@ RCT_EXPORT_VIEW_PROPERTY(maximumNumberOfAutoCompleteRows, NSInteger)
 RCT_EXPORT_VIEW_PROPERTY(applyBoldEffectToAutoCompleteSuggestions, BOOL)
 RCT_EXPORT_VIEW_PROPERTY(reverseAutoCompleteSuggestionsBoldEffect, BOOL)
 RCT_EXPORT_VIEW_PROPERTY(showTextFieldDropShadowWhenAutoCompleteTableIsOpen, BOOL);
-RCT_EXPORT_VIEW_PROPERTY(disableAutoCompleteTableUserInteractionWhileFetching, BOOL);
 RCT_EXPORT_VIEW_PROPERTY(autoCompleteTableViewHidden, BOOL);
 
 RCT_EXPORT_VIEW_PROPERTY(autoCompleteTableBorderColor, UIColor);
