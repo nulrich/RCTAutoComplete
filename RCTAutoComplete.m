@@ -60,6 +60,7 @@ RCT_CUSTOM_VIEW_PROPERTY(fontFamily, NSString, AutoCompleteView)
 {
     view.font = [RCTConvert UIFont:view.font withFamily:json ?: defaultView.font.familyName];
 }
+RCT_EXPORT_VIEW_PROPERTY(mostRecentEventCount, NSInteger)
 
 - (UIView *) view
 {

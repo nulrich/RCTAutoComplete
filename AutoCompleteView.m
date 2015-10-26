@@ -18,6 +18,7 @@
 }
 
 @synthesize suggestions = _suggestions;  //Must do this
+@synthesize mostRecentEventCount = _mostRecentEventCount;
 
 - (void) setSuggestions:(NSArray *)n {
   if (self.handler) {
