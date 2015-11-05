@@ -38,6 +38,7 @@ RCT_EXPORT_VIEW_PROPERTY(autoCorrect, BOOL)
 RCT_EXPORT_VIEW_PROPERTY(placeholder, NSString)
 RCT_EXPORT_VIEW_PROPERTY(clearButtonMode, UITextFieldViewMode)
 RCT_REMAP_VIEW_PROPERTY(clearTextOnFocus, clearsOnBeginEditing, BOOL)
+RCT_EXPORT_VIEW_PROPERTY(blurOnSubmit, BOOL)
 RCT_EXPORT_VIEW_PROPERTY(keyboardType, UIKeyboardType)
 RCT_EXPORT_VIEW_PROPERTY(returnKeyType, UIReturnKeyType)
 RCT_EXPORT_VIEW_PROPERTY(enablesReturnKeyAutomatically, BOOL)
@@ -60,6 +61,7 @@ RCT_CUSTOM_VIEW_PROPERTY(fontFamily, NSString, AutoCompleteView)
 {
     view.font = [RCTConvert UIFont:view.font withFamily:json ?: defaultView.font.familyName];
 }
+RCT_EXPORT_VIEW_PROPERTY(mostRecentEventCount, NSInteger)
 
 - (UIView *) view
 {

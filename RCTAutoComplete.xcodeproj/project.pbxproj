@@ -64,8 +64,8 @@
 			children = (
 				371961E71B50754700F79BB7 /* MLPAutoCompleteTextField.h */,
 				371961E81B50754700F79BB7 /* MLPAutoCompleteTextField.m */,
-				371961E91B50754700F79BB7 /* MLPAutoCompleteTextFieldDataSource.h */,
 				371961EA1B50754700F79BB7 /* MLPAutoCompleteTextFieldDelegate.h */,
+				371961E91B50754700F79BB7 /* MLPAutoCompleteTextFieldDataSource.h */,
 				371961EB1B50754700F79BB7 /* MLPAutoCompletionObject.h */,
 				371961EC1B50754700F79BB7 /* NSString+Levenshtein.h */,
 				371961ED1B50754700F79BB7 /* NSString+Levenshtein.m */,
@@ -231,8 +231,8 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
-					"$(SRCROOT)/../../React/**",
-					"$(SRCROOT)/../../node_modules/react-native/React/**",
+					"$(SRCROOT)/../../../React/**",
+					"$(SRCROOT)/../../../node_modules/react-native/React/**",
 				);
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "-ObjC";
@@ -247,7 +247,7 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
-					"$(SRCROOT)/../../node_modules/react-native/React/**",
+					"$(SRCROOT)/../../../node_modules/react-native/React/**",
 				);
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "-ObjC";

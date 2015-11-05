@@ -1,13 +1,10 @@
-#import <Foundation/Foundation.h>
-#import "MLPAutoCompleteTextField/MLPAutoCompleteTextField.h"
 #import "AutoCompleteView.h"
-#import "RCTViewManager.h"
-#import "RCTBridge.h"
-#import "UIView+React.h"
+
+#import "MLPAutoCompleteTextField/MLPAutoCompleteTextField.h"
 #import "RCTConvert.h"
 #import "RCTEventDispatcher.h"
 #import "RCTUtils.h"
-
+#import "UIView+React.h"
 
 @implementation AutoCompleteView
 {
@@ -15,14 +12,19 @@
     NSMutableArray *_reactSubviews;
     BOOL _jsRequestingFirstResponder;
     NSInteger _nativeEventCount;
+    NSInteger _mostRecentEventCount;
 }
-
-@synthesize suggestions = _suggestions;  //Must do this
 
 - (void) setSuggestions:(NSArray *)n {
   if (self.handler) {
     self.handler(n);
   }
+}
+
+- (void) setMostRecentEventCount:(NSInteger)mostRecentEventCount {
+    if (mostRecentEventCount > 0) {
+        _mostRecentEventCount = mostRecentEventCount;
+    }
 }
 
 - (instancetype)initWithEventDispatcher:(RCTEventDispatcher *)eventDispatcher
@@ -41,6 +43,7 @@
 
 RCT_NOT_IMPLEMENTED(- (instancetype)initWithFrame:(CGRect)frame)
 RCT_NOT_IMPLEMENTED(- (instancetype)initWithCoder:(NSCoder *)aDecoder)
+
 
 - (void)setText:(NSString *)text
 {
