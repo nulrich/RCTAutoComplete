@@ -36,6 +36,7 @@ RCT_CUSTOM_VIEW_PROPERTY(autoCompleteTableOriginOffset, NSInteger, AutoCompleteV
 // From RCTTextFieldManager.m
 RCT_EXPORT_VIEW_PROPERTY(autoCorrect, BOOL)
 RCT_EXPORT_VIEW_PROPERTY(placeholder, NSString)
+RCT_EXPORT_VIEW_PROPERTY(placeholderTextColor, UIColor)
 RCT_EXPORT_VIEW_PROPERTY(clearButtonMode, UITextFieldViewMode)
 RCT_REMAP_VIEW_PROPERTY(clearTextOnFocus, clearsOnBeginEditing, BOOL)
 RCT_EXPORT_VIEW_PROPERTY(blurOnSubmit, BOOL)
