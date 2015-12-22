@@ -164,7 +164,7 @@ maximumNumberOfAutoCompleteRows: PropTypes.number,
       // to match.  Most usage shouldn't need this, but if it does this will be
       // more correct but might flicker a bit and/or cause the cursor to jump.
       if (text !== this.props.value && typeof this.props.value === 'string') {
-        this.refs.input.setNativeProps({
+        this.refs.input && this.refs.input.setNativeProps({
           text: this.props.value,
         });
       }
