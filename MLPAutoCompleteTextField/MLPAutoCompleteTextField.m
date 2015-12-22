@@ -155,7 +155,7 @@ static NSString *kDefaultAutoCompleteCellIdentifier = @"_DefaultAutoCompleteCell
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
     if([keyPath isEqualToString:kBorderStyleKeyPath]) {
-        [self styleAutoCompleteTableForBorderStyle:self.borderStyle];
+        //[self styleAutoCompleteTableForBorderStyle:self.borderStyle];
     } else if ([keyPath isEqualToString:kAutoCompleteTableViewHiddenKeyPath]) {
         if(self.autoCompleteTableView.hidden){
             [self closeAutoCompleteTableView];
@@ -163,7 +163,7 @@ static NSString *kDefaultAutoCompleteCellIdentifier = @"_DefaultAutoCompleteCell
             [self.autoCompleteTableView reloadData];
         }
     } else if ([keyPath isEqualToString:kBackgroundColorKeyPath]){
-        [self styleAutoCompleteTableForBorderStyle:self.borderStyle];
+       // [self styleAutoCompleteTableForBorderStyle:self.borderStyle];
     } else if ([keyPath isEqualToString:kKeyboardAccessoryInputKeyPath]){
         if(self.autoCompleteTableAppearsAsKeyboardAccessory){
             [self setAutoCompleteTableForKeyboardAppearance];
@@ -331,6 +331,11 @@ withAutoCompleteString:(NSString *)string
     }
 }
 
+- (NSInteger)maximumEditDistanceForAutoCompleteTerms
+{
+    return self.requireAutoCompleteSuggestionsToMatchInputExactly ? 0 : self.maximumEditDistance;
+}
+
 #pragma mark - AutoComplete Fetch Operation Delegate
 
 - (void)autoCompleteTermsDidFetch:(NSDictionary *)fetchInfo
@@ -480,6 +485,9 @@ withAutoCompleteString:(NSString *)string
     [self setAutoCompleteFontSize:13];
     [self setMaximumNumberOfAutoCompleteRows:3];
     [self setPartOfAutoCompleteRowHeightToCut:0.5f];
+    
+    [self setMaximumEditDistance:100];
+    [self setRequireAutoCompleteSuggestionsToMatchInputExactly:NO];
     
     [self setAutoCompleteTableCellBackgroundColor:[UIColor clearColor]];
     
@@ -633,6 +641,8 @@ withAutoCompleteString:(NSString *)string
             break;
     }
 }
+
+
 
 - (void)setRoundedRectStyleForAutoCompleteTableView
 {
@@ -872,7 +882,7 @@ withAutoCompleteString:(NSString *)string
 
 - (void) cancel
 {
-    dispatch_semaphore_signal(sentinelSemaphore);
+    if (sentinelSemaphore) dispatch_semaphore_signal(sentinelSemaphore);
     [super cancel];
 }
 
@@ -1028,6 +1038,7 @@ withAutoCompleteString:(NSString *)string
     
     NSMutableArray *editDistances = [NSMutableArray arrayWithCapacity:possibleTerms.count];
     
+    NSInteger maxEditDistance = self.delegate.maximumEditDistanceForAutoCompleteTerms;
     
     for(NSObject *originalObject in possibleTerms) {
         
@@ -1046,6 +1057,10 @@ withAutoCompleteString:(NSString *)string
         
         NSUInteger maximumRange = (inputString.length < currentString.length) ? inputString.length : currentString.length;
         float editDistanceOfCurrentString = [inputString asciiLevenshteinDistanceWithString:[currentString substringWithRange:NSMakeRange(0, maximumRange)]];
+        
+        if(editDistanceOfCurrentString > maxEditDistance){
+            continue;
+        }
         
         NSDictionary * stringsWithEditDistances = @{kSortInputStringKey : currentString ,
                                                          kSortObjectKey : originalObject,
