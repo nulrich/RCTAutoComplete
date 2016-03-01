@@ -100,8 +100,16 @@ autoCapitalize: PropTypes.oneOf([
  * @platorm android
  */
 textAlign: PropTypes.oneOf([
-    'start',
+    // Cross-platform
     'center',
+    // ios only
+    'auto',
+    'center',
+    'justify',
+    'left',
+    'right',
+    // android only
+    'start',
     'end',
     ]),
 
