@@ -14,47 +14,50 @@
 For example download [Country list](https://gist.githubusercontent.com/Keeguon/2310008/raw/865a58f59b9db2157413e7d3d949914dbf5a237d/countries.json)
 
 ```js
+
 'use strict';
 
 var AutoComplete = require('react-native-autocomplete');
 var Countries = require('./countries.json');
-var React = require('react-native');
-var {
+
+import React, { Component } from 'react';
+import {
     AppRegistry,
     StyleSheet,
     Text,
     TextInput,
     View,
     AlertIOS
-} = React;
+} from 'react-native';
 
-var RCTAutoCompleteApp = React.createClass({
+class RCTAutoCompleteApp extends Component {
 
-    getInitialState: function() {
-        return {data: []};
-    },
+  constructor(props) {
+    super(props);
+    this.state = {
+        data: Countries
+    };
+  }
 
-    onTyping: function (text) {
-
+   onTyping(text){
         var countries = Countries.filter(function (country) {
             return country.name.toLowerCase().startsWith(text.toLowerCase())
         }).map(function (country) {
             return country.name;
         });
 
-        this.setState({
-            data:  countries
-        });
-    },
+        this.setState({data: countries});
+    }
 
-    render: function() {
+
+  render() {
         return (
             <View style={styles.container}>
                 <Text style={styles.welcome}>
                 Search for a country
                 </Text>
                 <AutoComplete
-                    onTyping={this.onTyping}
+                    onTyping={(text) => this.onTyping(text)}
                     onSelect={(e) => AlertIOS.alert('You choosed', e)}
                     onBlur={() => AlertIOS.alert('Blur')}
                     onFocus={() => AlertIOS.alert('Focus')}
@@ -90,8 +93,10 @@ var RCTAutoCompleteApp = React.createClass({
                 />
             </View>
         );
-    }
-});
+
+  }
+}
+
 
 var styles = StyleSheet.create({
     autocomplete: {
