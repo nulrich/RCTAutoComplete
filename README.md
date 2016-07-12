@@ -25,7 +25,6 @@ import {
     AppRegistry,
     StyleSheet,
     Text,
-    TextInput,
     View,
     AlertIOS
 } from 'react-native';
