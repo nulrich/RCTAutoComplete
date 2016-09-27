@@ -1,7 +1,6 @@
 var React = require('react');
 var PropTypes = React.PropTypes;
-
-import {requireNativeComponent} from 'react-native';
+var { requireNativeComponent } = require('react-native');
 
 var NativeAutoComplete = requireNativeComponent('RCTAutoComplete', null);
 
@@ -101,16 +100,8 @@ autoCapitalize: PropTypes.oneOf([
  * @platorm android
  */
 textAlign: PropTypes.oneOf([
-    // Cross-platform
-    'center',
-    // ios only
-    'auto',
-    'center',
-    'justify',
-    'left',
-    'right',
-    // android only
     'start',
+    'center',
     'end',
     ]),
 

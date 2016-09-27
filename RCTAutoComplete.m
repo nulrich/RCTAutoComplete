@@ -3,6 +3,7 @@
 #import "RCTEventDispatcher.h"
 #import "UIView+React.h"
 #import "AutoCompleteView.h"
+#import "RCTFont.h"
 
 @implementation RCTAutoComplete
 
@@ -47,21 +48,21 @@ RCT_EXPORT_VIEW_PROPERTY(enablesReturnKeyAutomatically, BOOL)
 RCT_REMAP_VIEW_PROPERTY(color, textColor, UIColor)
 RCT_REMAP_VIEW_PROPERTY(autoCapitalize, autocapitalizationType, UITextAutocapitalizationType)
 RCT_REMAP_VIEW_PROPERTY(textAlign, textAlignment, NSTextAlignment)
-RCT_CUSTOM_VIEW_PROPERTY(fontSize, CGFloat, AutoCompleteView)
+RCT_CUSTOM_VIEW_PROPERTY(fontSize, NSNumber, AutoCompleteView)
 {
-    view.font = [RCTConvert UIFont:view.font withSize:json ?: @(defaultView.font.pointSize)];
+    view.font = [RCTFont updateFont:view.font withSize:json ?: @(defaultView.font.pointSize)];
 }
 RCT_CUSTOM_VIEW_PROPERTY(fontWeight, NSString, __unused AutoCompleteView)
 {
-    view.font = [RCTConvert UIFont:view.font withWeight:json]; // defaults to normal
+    view.font = [RCTFont updateFont:view.font withWeight:json]; // defaults to normal
 }
 RCT_CUSTOM_VIEW_PROPERTY(fontStyle, NSString, __unused AutoCompleteView)
 {
-    view.font = [RCTConvert UIFont:view.font withStyle:json]; // defaults to normal
+    view.font = [RCTFont updateFont:view.font withStyle:json]; // defaults to normal
 }
 RCT_CUSTOM_VIEW_PROPERTY(fontFamily, NSString, AutoCompleteView)
 {
-    view.font = [RCTConvert UIFont:view.font withFamily:json ?: defaultView.font.familyName];
+    view.font = [RCTFont updateFont:view.font withFamily:json ?: defaultView.font.familyName];
 }
 RCT_EXPORT_VIEW_PROPERTY(mostRecentEventCount, NSInteger)
 
