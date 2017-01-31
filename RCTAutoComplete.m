@@ -1,9 +1,9 @@
 #import <Foundation/Foundation.h>
 #import "RCTAutoComplete.h"
-#import "RCTEventDispatcher.h"
+#import <React/RCTEventDispatcher.h>
 #import "UIView+React.h"
 #import "AutoCompleteView.h"
-#import "RCTFont.h"
+#import <React/RCTFont.h>
 
 @implementation RCTAutoComplete
 
