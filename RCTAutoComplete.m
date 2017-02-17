@@ -1,8 +1,10 @@
 #import <Foundation/Foundation.h>
 #import "RCTAutoComplete.h"
+#import "RCTTableViewCell.h"
 #import <React/RCTEventDispatcher.h>
 #import "UIView+React.h"
 #import "AutoCompleteView.h"
+#import "DictionaryAutoCompleteObject.h"
 #import <React/RCTFont.h>
 
 @implementation RCTAutoComplete
@@ -32,6 +34,14 @@ RCT_EXPORT_VIEW_PROPERTY(autoCompleteRegularFontName, NSString);
 RCT_CUSTOM_VIEW_PROPERTY(autoCompleteTableOriginOffset, NSInteger, AutoCompleteView)
 {
     view.autoCompleteTableOriginOffset = CGSizeMake(0, [RCTConvert NSInteger:json]);
+}
+
+RCT_CUSTOM_VIEW_PROPERTY(cellComponent, NSString*, AutoCompleteView) {
+    // Register RCTTableViewCellBridge (hosts cell React Component)
+    [view registerAutoCompleteCellClass:[RCTTableViewCell class]
+                 forCellReuseIdentifier:@"RCTTableViewCell"];
+    // Set cell React Component
+    [view setCellComponent:[RCTConvert NSString:json]];
 }
 
 // From RCTTextFieldManager.m
@@ -68,7 +78,8 @@ RCT_EXPORT_VIEW_PROPERTY(mostRecentEventCount, NSInteger)
 
 - (UIView *) view
 {
-    AutoCompleteView  *searchTextField  = [[AutoCompleteView alloc] initWithEventDispatcher:self.bridge.eventDispatcher];
+    AutoCompleteView *searchTextField = [[AutoCompleteView alloc] initWithEventDispatcher:self.bridge.eventDispatcher];
+
     searchTextField.autoCompleteDataSource = self;
     searchTextField.autoCompleteDelegate = self;
     
@@ -84,9 +95,44 @@ RCT_EXPORT_VIEW_PROPERTY(mostRecentEventCount, NSInteger)
         handler([NSArray array]);
     } else {
         textField.handler = handler;
-        NSDictionary *event  = @{ @"possibleCompletionsForString": string, @"target": textField.reactTag};
+        
+        NSDictionary *event  = @{
+            @"possibleCompletionsForString": string,
+            @"target": textField.reactTag
+        };
+        
         [self.bridge.eventDispatcher sendInputEventWithName:@"topChange" body:event];
     }
+}
+
+- (BOOL)autoCompleteTextField:(MLPAutoCompleteTextField *)textField
+          shouldConfigureCell:(UITableViewCell *)cell
+       withAutoCompleteString:(NSString *)autocompleteString
+         withAttributedString:(NSAttributedString *)boldedString
+        forAutoCompleteObject:(id<MLPAutoCompletionObject>)autocompleteObject
+            forRowAtIndexPath:(NSIndexPath *)indexPath;
+{
+    // If no registered Cell Component
+    if (((AutoCompleteView*)textField).cellComponent == nil) {
+        return YES;
+    }
+    
+    RCTTableViewCell *customCell = (RCTTableViewCell*) cell;
+    
+    RCTBridge *_bridge = self.bridge;
+
+    // 🚀 https://github.com/aksonov/react-native-tableview/blob/8982116711cd74e819a73237c53307839fe071ce/RNTableView/RNTableView.m#L87
+    while ([_bridge respondsToSelector:NSSelectorFromString(@"parentBridge")]
+           && [_bridge valueForKey:@"parentBridge"]) {
+        _bridge = [_bridge valueForKey:@"parentBridge"];
+    }
+    
+    [customCell initWithBridge:_bridge
+                reactComponent:((AutoCompleteView*)textField).cellComponent
+                          json:((DictionaryAutoCompleteObject*)autocompleteObject).json
+    ];
+    
+    return YES;
 }
 
 - (void)autoCompleteTextField:(MLPAutoCompleteTextField *)textField
@@ -95,7 +141,11 @@ RCT_EXPORT_VIEW_PROPERTY(mostRecentEventCount, NSInteger)
             forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    NSDictionary *event  = @{ @"target": textField.reactTag, @"didSelectAutoCompleteString": selectedString };
+    NSDictionary *event  = @{
+        @"target": textField.reactTag,
+        @"didSelectAutoCompleteString": selectedString
+    };
+    
     [self.bridge.eventDispatcher sendInputEventWithName:@"topChange" body:event];
 }
 
