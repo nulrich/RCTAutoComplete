@@ -1,4 +1,5 @@
 #import "AutoCompleteView.h"
+#import "DictionaryAutoCompleteObject.h"
 
 #import "MLPAutoCompleteTextField/MLPAutoCompleteTextField.h"
 #import <React/RCTConvert.h>
@@ -15,10 +16,20 @@
     NSInteger _mostRecentEventCount;
 }
 
-- (void) setSuggestions:(NSArray *)n {
-  if (self.handler) {
-    self.handler(n);
-  }
+- (void) setSuggestions:(NSArray *)completions {
+    if (self.handler) {
+        if (self.cellComponent !=nil) {
+            NSMutableArray *mutableJsonObjects = [NSMutableArray new];
+            for(NSDictionary *json in completions){
+                DictionaryAutoCompleteObject *jsonObject = [[DictionaryAutoCompleteObject alloc] initWithDictionnary:json];
+                [mutableJsonObjects addObject:jsonObject];
+            }
+      
+          self.handler([NSArray arrayWithArray:mutableJsonObjects]);
+        } else {
+          self.handler(completions);
+        }
+    }
 }
 
 - (void) setMostRecentEventCount:(NSInteger)mostRecentEventCount {

@@ -8,9 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		13BE3DEE1AC21097009241FE /* RCTAutoComplete.m in Sources */ = {isa = PBXBuildFile; fileRef = 13BE3DED1AC21097009241FE /* RCTAutoComplete.m */; };
+		37005CB01E5720DB00FE0899 /* DictionaryAutoCompleteObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 37005CAF1E5720DB00FE0899 /* DictionaryAutoCompleteObject.m */; };
 		3798A8D81D9B09D500348235 /* AutoCompleteView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3798A8D61D9B09D500348235 /* AutoCompleteView.m */; };
 		3798A8F51D9B0B0900348235 /* MLPAutoCompleteTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 3798A8EF1D9B0B0900348235 /* MLPAutoCompleteTextField.m */; };
 		3798A8F61D9B0B0900348235 /* NSString+Levenshtein.m in Sources */ = {isa = PBXBuildFile; fileRef = 3798A8F41D9B0B0900348235 /* NSString+Levenshtein.m */; };
+		37DBC8B31E4496DE00317A45 /* RCTTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 37DBC8B21E4496DE00317A45 /* RCTTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -29,6 +31,8 @@
 		134814201AA4EA6300B7C361 /* libRCTAutoComplete.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRCTAutoComplete.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		13BE3DEC1AC21097009241FE /* RCTAutoComplete.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCTAutoComplete.h; sourceTree = "<group>"; };
 		13BE3DED1AC21097009241FE /* RCTAutoComplete.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCTAutoComplete.m; sourceTree = "<group>"; };
+		37005CAE1E5720B500FE0899 /* DictionaryAutoCompleteObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DictionaryAutoCompleteObject.h; sourceTree = "<group>"; };
+		37005CAF1E5720DB00FE0899 /* DictionaryAutoCompleteObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DictionaryAutoCompleteObject.m; sourceTree = "<group>"; };
 		3798A8D51D9B09D500348235 /* AutoCompleteView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AutoCompleteView.h; sourceTree = "<group>"; };
 		3798A8D61D9B09D500348235 /* AutoCompleteView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AutoCompleteView.m; sourceTree = "<group>"; };
 		3798A8EE1D9B0B0900348235 /* MLPAutoCompleteTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MLPAutoCompleteTextField.h; path = MLPAutoCompleteTextField/MLPAutoCompleteTextField.h; sourceTree = "<group>"; };
@@ -38,6 +42,8 @@
 		3798A8F21D9B0B0900348235 /* MLPAutoCompletionObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MLPAutoCompletionObject.h; path = MLPAutoCompleteTextField/MLPAutoCompletionObject.h; sourceTree = "<group>"; };
 		3798A8F31D9B0B0900348235 /* NSString+Levenshtein.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+Levenshtein.h"; path = "MLPAutoCompleteTextField/NSString+Levenshtein.h"; sourceTree = "<group>"; };
 		3798A8F41D9B0B0900348235 /* NSString+Levenshtein.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+Levenshtein.m"; path = "MLPAutoCompleteTextField/NSString+Levenshtein.m"; sourceTree = "<group>"; };
+		37DBC8B11E44965900317A45 /* RCTTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RCTTableViewCell.h; sourceTree = "<group>"; };
+		37DBC8B21E4496DE00317A45 /* RCTTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCTTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +82,10 @@
 		58B511D21A9E6C8500147676 = {
 			isa = PBXGroup;
 			children = (
+				37005CAF1E5720DB00FE0899 /* DictionaryAutoCompleteObject.m */,
+				37005CAE1E5720B500FE0899 /* DictionaryAutoCompleteObject.h */,
+				37DBC8B21E4496DE00317A45 /* RCTTableViewCell.m */,
+				37DBC8B11E44965900317A45 /* RCTTableViewCell.h */,
 				3798A8E41D9B0ACB00348235 /* MLPAutoCompleteTextField */,
 				3798A8D51D9B09D500348235 /* AutoCompleteView.h */,
 				3798A8D61D9B09D500348235 /* AutoCompleteView.m */,
@@ -142,6 +152,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				3798A8F51D9B0B0900348235 /* MLPAutoCompleteTextField.m in Sources */,
+				37005CB01E5720DB00FE0899 /* DictionaryAutoCompleteObject.m in Sources */,
+				37DBC8B31E4496DE00317A45 /* RCTTableViewCell.m in Sources */,
 				3798A8F61D9B0B0900348235 /* NSString+Levenshtein.m in Sources */,
 				3798A8D81D9B09D500348235 /* AutoCompleteView.m in Sources */,
 				13BE3DEE1AC21097009241FE /* RCTAutoComplete.m in Sources */,
@@ -232,7 +244,7 @@
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(SRCROOT)/../../React/**",
-					"$(SRCROOT)/../../node_modules/react-native/React/**"
+					"$(SRCROOT)/../../node_modules/react-native/React/**",
 				);
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "-ObjC";
@@ -248,7 +260,7 @@
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(SRCROOT)/../../React/**",
-					"$(SRCROOT)/../../node_modules/react-native/React/**"
+					"$(SRCROOT)/../../node_modules/react-native/React/**",
 				);
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "-ObjC";

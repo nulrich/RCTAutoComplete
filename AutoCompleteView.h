@@ -6,6 +6,8 @@
 
 @interface AutoCompleteView : MLPAutoCompleteTextField <UITextFieldDelegate>
 
+@property (nonatomic, copy) NSString *cellComponent;
+
 @property (retain, nonatomic) NSArray *suggestions;
 @property (copy) void (^handler)(NSArray *);
 
