@@ -31,9 +31,24 @@ RCT_EXPORT_VIEW_PROPERTY(autoCompleteFontSize, CGFloat);
 RCT_EXPORT_VIEW_PROPERTY(autoCompleteBoldFontName, NSString);
 RCT_EXPORT_VIEW_PROPERTY(autoCompleteRegularFontName, NSString);
 
-RCT_CUSTOM_VIEW_PROPERTY(autoCompleteTableOriginOffset, NSInteger, AutoCompleteView)
+RCT_CUSTOM_VIEW_PROPERTY(autoCompleteTableTopOffset, NSInteger, AutoCompleteView)
 {
-    view.autoCompleteTableOriginOffset = CGSizeMake(0, [RCTConvert NSInteger:json]);
+    CGSize size = view.autoCompleteTableOriginOffset;
+    size.height = [RCTConvert NSInteger:json];
+    view.autoCompleteTableOriginOffset = size;
+}
+
+RCT_CUSTOM_VIEW_PROPERTY(autoCompleteTableLeftOffset, NSInteger, AutoCompleteView)
+{
+    CGSize size = view.autoCompleteTableOriginOffset;
+    size.width = [RCTConvert NSInteger:json];
+    view.autoCompleteTableOriginOffset = size;
+}
+
+
+RCT_CUSTOM_VIEW_PROPERTY(autoCompleteTableSizeOffset, NSInteger, AutoCompleteView)
+{
+    view.autoCompleteTableSizeOffset = CGSizeMake([RCTConvert NSInteger:json], 0);
 }
 
 RCT_CUSTOM_VIEW_PROPERTY(cellComponent, NSString*, AutoCompleteView) {
@@ -43,6 +58,8 @@ RCT_CUSTOM_VIEW_PROPERTY(cellComponent, NSString*, AutoCompleteView) {
     // Set cell React Component
     [view setCellComponent:[RCTConvert NSString:json]];
 }
+
+RCT_EXPORT_VIEW_PROPERTY(autoCompleteFetchRequestDelay, NSTimeInterval);
 
 // From RCTTextFieldManager.m
 RCT_EXPORT_VIEW_PROPERTY(autoCorrect, BOOL)
@@ -81,7 +98,8 @@ RCT_EXPORT_VIEW_PROPERTY(mostRecentEventCount, NSInteger)
     AutoCompleteView *searchTextField = [[AutoCompleteView alloc] initWithEventDispatcher:self.bridge.eventDispatcher];
 
     searchTextField.autoCompleteDataSource = self;
-    searchTextField.autoCompleteDelegate = self;
+    searchTextField.autoCompleteDelegate = self;    
+    searchTextField.showTextFieldDropShadowWhenAutoCompleteTableIsOpen = false;
     
     return searchTextField;
 }
@@ -128,8 +146,8 @@ RCT_EXPORT_VIEW_PROPERTY(mostRecentEventCount, NSInteger)
     }
     
     [customCell initWithBridge:_bridge
-                reactComponent:((AutoCompleteView*)textField).cellComponent
-                          json:((DictionaryAutoCompleteObject*)autocompleteObject).json
+                reactComponent:[(AutoCompleteView*)textField cellComponent]
+                          json:[(DictionaryAutoCompleteObject*)autocompleteObject json]
     ];
     
     return YES;
@@ -141,10 +159,15 @@ RCT_EXPORT_VIEW_PROPERTY(mostRecentEventCount, NSInteger)
             forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    NSDictionary *event  = @{
-        @"target": textField.reactTag,
-        @"didSelectAutoCompleteString": selectedString
-    };
+    NSDictionary *event = selectedObject
+        ? @{
+          @"target": textField.reactTag,
+          @"didSelectAutoCompleteString": [(DictionaryAutoCompleteObject*)selectedObject json]
+        }
+        : @{
+          @"target": textField.reactTag,
+          @"didSelectAutoCompleteString": selectedString
+        };
     
     [self.bridge.eventDispatcher sendInputEventWithName:@"topChange" body:event];
 }
