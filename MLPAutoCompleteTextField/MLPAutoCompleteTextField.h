@@ -62,6 +62,7 @@
 @property (assign) CGFloat autoCompleteRowHeight;
 @property (nonatomic, assign) CGRect autoCompleteTableFrame;
 @property (assign) CGSize autoCompleteTableOriginOffset;
+@property (assign) CGSize autoCompleteTableSizeOffset;
 @property (assign) CGFloat autoCompleteTableCornerRadius; //only applies for drop down style autocomplete tables.
 @property (nonatomic, assign) UIEdgeInsets autoCompleteContentInsets;
 @property (nonatomic, assign) UIEdgeInsets autoCompleteScrollIndicatorInsets;
@@ -78,5 +79,4 @@
 
 - (void)reloadData; //it will ask DataSource for data again
 @end
-
 
