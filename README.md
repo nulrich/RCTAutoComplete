@@ -1,5 +1,5 @@
 # react-native-autocomplete
-[MLPAutoCompleteTextField](https://github.com/EddyBorja/MLPAutoCompleteTextField) wrapper for React Native, supports React Native custom cells 🎨.
+[MLPAutoCompleteTextField](https://github.com/EddyBorja/MLPAutoCompleteTextField) (iOS only) wrapper for React Native, supports React Native custom cells 🎨.
 
 ![Demo gif](https://raw.githubusercontent.com/nulrich/RCTAutoComplete/master/demo.gif)
 
