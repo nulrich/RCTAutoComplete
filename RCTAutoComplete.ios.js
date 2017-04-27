@@ -96,9 +96,11 @@ var RCTAutoComplete = React.createClass({
      * @platorm android
      */
     textAlign: PropTypes.oneOf([
-      'start',
+        'auto',
       'center',
-      'end',
+      'justify',
+      'left',
+      'right'
     ]),
 
     cellComponent: PropTypes.string,
