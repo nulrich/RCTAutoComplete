@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "react-native-autocomplete"
-  s.version          = "0.3.0"
+  s.version          = "0.4.0"
   s.summary          = "React Native Component for MLPAutoCompleteTextField"
   s.requires_arc = true
   s.author       = { 'Nicolas Ulrich' => 'github@ulrich.co' }
